@@ -6,7 +6,7 @@ import { PointerLockControls as PointerLockControlsImpl } from 'three-stdlib'
 
 // Definimos el componente principal de la cámara, que será reutilizable
 const HumanCamera = forwardRef(function HumanCamera(_, ref) {
-    // Creamos una referencia a la cámara (con tipo Three.js real)
+    // Creamos una referencia a la cámara (con tipo Three.js )
     const cameraRef = useRef<THREE.PerspectiveCamera>(null!)
     const controlsRef = useRef<PointerLockControlsImpl>(null!)
 

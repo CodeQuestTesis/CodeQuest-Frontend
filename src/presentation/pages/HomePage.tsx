@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {FaQuestion} from "react-icons/fa";
 import HelpModal from "../components/modals/HelpModal.tsx";
-import {Button} from "../components/UI/Button.tsx";
+import {Button} from "../components/ui/Button.tsx";
 
 function HomePage({ onStart }: { onStart: () => void }) {
     const [modalOpen, setModalOpen] = useState(false);
