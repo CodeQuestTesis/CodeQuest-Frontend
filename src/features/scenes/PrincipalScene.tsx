@@ -1,8 +1,10 @@
 import { Canvas } from '@react-three/fiber'
-import HumanCamera from "./components/Camera.tsx";
-import PlayerMovement from "./PlayerMovement.tsx";
+import HumanCamera from "../scene-elements/cameras/Camera.tsx";
+import PlayerMovement from "../scene-elements/controls/PlayerMovement.tsx";
 import { useRef } from "react";
 import { PointerLockControls as PointerLockControlsImpl } from 'three-stdlib'
+import FloorEntrance from "../scene-elements/enviroment/FloorEntrance.tsx";
+import OfficeFacade from "../scene-elements/enviroment/office/OfficeFancade.tsx";
 
 const PrincipalScene = () => {
     const controlsRef = useRef<PointerLockControlsImpl>(null)
@@ -16,17 +18,10 @@ const PrincipalScene = () => {
                 {/* Luz direccional */}
                 <directionalLight position={[10, 10, 5]} intensity={1} />
 
-                {/* Suelo: un plano */}
-                <mesh receiveShadow={true} position={[0, -2, 0]}>
-                    <boxGeometry args={[20, 0.1, 20]} />
-                    <meshStandardMaterial color="gray" />
-                </mesh>
+                {/*Componente del Suelo*/}
+                <FloorEntrance/>
 
-                {/* Un cubo encima del suelo */}
-                <mesh position={[2, -1, 0]} rotation={[0, Math.PI / 4, 0]} scale={[2, 2, 2]}>
-                    <boxGeometry args={[1, 1, 1]} />
-                    <meshStandardMaterial color="blue" />
-                </mesh>
+                <OfficeFacade/>
 
                 {/* Llamamos al componente de la cámara */}
                 <HumanCamera ref={controlsRef} />

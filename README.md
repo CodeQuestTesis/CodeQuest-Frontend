@@ -41,8 +41,13 @@ src/
 │   └── models/                   # Modelos 3D para A-Frame
 │
 ├── features/                     # Módulos principales
-│   ├── onboarding/               # Lógica del recorrido inicial
-│   ├── tour/                     # Movimiento y ambientes
+│   ├── scene-elements/           # Lógica del recorrido inicial
+│   │   ├── cameras/              # Cámaras personalizadas, FPS o followCam
+│   │   ├── controls/             # Controles del usuario o input devices
+│   │   ├── environment/          # Suelo, cielo, luces
+│   │   └── characters/           # NPCs o guía (Alex Codez, por ejemplo)
+│   │
+│   ├── scenes/                   # Escenarios completos, uno o más por experiencia
 │   └── games/                    # Minijuegos
 │
 ├── infrastructure/              # Soporte técnico del frontend

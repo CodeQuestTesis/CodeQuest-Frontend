@@ -3,7 +3,7 @@ import { useFrame } from '@react-three/fiber'
 import { PointerLockControls as PointerLockControlsImpl } from 'three-stdlib'
 import * as THREE from 'three'
 
-const MOVEMENT_SPEED = 0.1
+const MOVEMENT_SPEED = 0.03
 const keysPressed: Record<string, boolean> = {}
 
 interface PlayerMovementProps {

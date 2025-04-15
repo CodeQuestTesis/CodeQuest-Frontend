@@ -1,5 +1,5 @@
 import './App.css'
-import PrincipalScene from "./features/tour/PrincipalScene.tsx";
+import PrincipalScene from "./features/scenes/PrincipalScene.tsx";
 import HomePage from "./presentation/pages/HomePage.tsx";
 import {useState} from "react";
 

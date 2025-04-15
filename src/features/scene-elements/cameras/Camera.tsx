@@ -36,7 +36,7 @@ const HumanCamera = forwardRef(function HumanCamera(_, ref) {
                 makeDefault                                         // La establece como la cámara principal en la escena
                 ref={cameraRef}                                     // Asignamos la referencia creada anteriormente
                 args={[75, size.width / size.height, 0.1, 1000]}    // mismos valores que seteamos en el useEffect
-                position={[0, 0, 0]}                             // Altura de una persona promedio (1.75 metros)
+                position={[0, 1.75, 0]}                             // Altura de una persona promedio (1.75 metros)
             />
 
             {/* Controles estilo jugador: con click se entra a modo de movimiento libre */}
