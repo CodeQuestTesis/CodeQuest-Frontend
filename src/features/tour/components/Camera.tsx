@@ -1,12 +1,14 @@
 import { PerspectiveCamera, PointerLockControls } from '@react-three/drei' // Importamos la cámara de perspectiva y los controles tipo "jugador" (como un FPS)
-import { useRef, useEffect } from 'react' // useRef para referenciar la cámara, useEffect para ajustes iniciales
+import { useRef, useEffect, forwardRef, useImperativeHandle } from 'react' // useRef para referenciar la cámara, useEffect para ajustes iniciales
 import { useThree } from '@react-three/fiber' // useThree para acceder al tamaño del canvas desde React Three Fiber
 import * as THREE from 'three' // THREE nos permite usar los tipos nativos (como PerspectiveCamera)
+import { PointerLockControls as PointerLockControlsImpl } from 'three-stdlib'
 
 // Definimos el componente principal de la cámara, que será reutilizable
-export default function HumanCamera() {
+const HumanCamera = forwardRef(function HumanCamera(_, ref) {
     // Creamos una referencia a la cámara (con tipo Three.js real)
     const cameraRef = useRef<THREE.PerspectiveCamera>(null!)
+    const controlsRef = useRef<PointerLockControlsImpl>(null!)
 
     // Obtenemos el tamaño del lienzo (canvas) para calcular el aspect ratio
     const { size } = useThree()
@@ -25,6 +27,8 @@ export default function HumanCamera() {
         }
     }, [size])
 
+    useImperativeHandle(ref, () => controlsRef.current!)
+
     return (
         <>
             {/* Cámara principal con perspectiva y posición tipo "persona" */}
@@ -32,12 +36,13 @@ export default function HumanCamera() {
                 makeDefault                                         // La establece como la cámara principal en la escena
                 ref={cameraRef}                                     // Asignamos la referencia creada anteriormente
                 args={[75, size.width / size.height, 0.1, 1000]}    // mismos valores que seteamos en el useEffect
-                position={[0, 0, 0]}                                // Altura de una persona promedio (1.75 metros)
+                position={[0, 0, 0]}                             // Altura de una persona promedio (1.75 metros)
             />
 
             {/* Controles estilo jugador: con click se entra a modo de movimiento libre */}
-            <PointerLockControls selector="#root" />
-            {/* selector="#root" indica el elemento HTML sobre el cual se activa el pointer lock */}
+            <PointerLockControls ref={controlsRef} selector="canvas" />
         </>
     )
-}
+})
+
+export default HumanCamera
