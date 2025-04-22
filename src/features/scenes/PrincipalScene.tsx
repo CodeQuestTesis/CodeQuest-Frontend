@@ -1,6 +1,7 @@
 import { Canvas } from '@react-three/fiber'
 import HumanCamera from "../scene-elements/cameras/Camera.tsx";
 import PlayerMovement from "../scene-elements/controls/PlayerMovement.tsx";
+import Person from "../../../public/engineer-person/Person.tsx";
 import { useRef } from "react";
 import { PointerLockControls as PointerLockControlsImpl } from 'three-stdlib'
 import FloorEntrance from "../scene-elements/enviroment/FloorEntrance.tsx";
@@ -30,6 +31,9 @@ const PrincipalScene = () => {
 
                     {/* Componente de movimiento del jugador */}
                     <PlayerMovement controlsRef={controlsRef} />
+
+                    {/* Agregar el modelo 3D de la persona */}
+                    <Person position={[0, 0, -7]} scale={0.18}/>
                 </Physics>
             </Canvas>
         </div>
